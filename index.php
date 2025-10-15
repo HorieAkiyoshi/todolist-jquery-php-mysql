@@ -2,8 +2,8 @@
 require_once("database/conn.php");
 
 $sql = $pdo->query("SELECT * FROM to_do ORDER BY id ASC");
-if($sql->rowCount() > 0){
-    $tasks = $sql->fetchAll(PDO:: FETCH_ASSOC);
+{
+    
 }
 ?><!DOCTYPE html>
 <html lang="en">
@@ -24,6 +24,10 @@ if($sql->rowCount() > 0){
         </form>
 
         <div id="tasks">
+            <?php 
+                if($sql->rowCount() > 0): 
+                $tasks = $sql->fetchAll(PDO:: FETCH_ASSOC);
+            ?>
             <?php foreach($tasks as $task): ?>
             <div class="task">
                 <p class="task-description">
@@ -42,6 +46,9 @@ if($sql->rowCount() > 0){
                 </form>
             </div>
             <?php  endforeach; ?>
+            <?php else: ?>
+                <p style="color: #fff;">There are no tasks yet.</p>
+            <?php endif ?>
         </div>
     </div>
     

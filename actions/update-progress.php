@@ -7,12 +7,5 @@
     if($id && $completed){
         $sql = $pdo->prepare("UPDATE to_do SET completed=? WHERE id=?");
         $sql->execute(array($completed, $id));
-
-        echo json_encode(['success'] => true);
-        exit;
-    }else{
-        echo json_encode(['success'] => false);
-        exit;
     }
-    
 ?>
